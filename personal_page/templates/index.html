@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>The Big Picture - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Knewave|Sigmar+One' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Arvo' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah|Pacifico' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:300' rel='stylesheet' type='text/css'>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="/static/css/tooltipster.css" />-->
+
+
+    <!-- Custom CSS -->
+    <link href="/static/css/the-big-picture.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+
+    <![endif]-->
+	
+	
+
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <!-- We use the fluid option here to avoid overriding the fixed width of a normal container within the narrow content columns. -->
+      <div class="container-fluid col-md-offset-4">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-8">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>         
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-8">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">AboutMe</a></li>
+            <li><a href="#" class="Resume" data-toggle="modal" data-target=".bs-example-modal-lg">Resume</a></li>
+            <li><a href="#">Projects</a></li>
+			<!--<li><a href="#">Contact</a></li>-->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+	<br>
+	<br>
+	<br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-md-offset-2 main_text">
+                <h1>#TheBigPicture</h1>
+                <p>Hello. I'm Rahul, a <strong class="imp1">Web application developer</strong> living and working in Kansas City, Kansas. Plain and simple,
+                 I love to design and build web apps. I'm <strong class="imp2" >passionate</strong> about creating <strong class="imp3">clean, user-centric, elegant </strong> solutions.
+                 The apps you love.The solutions you need. Explore this page to know more about me.... </p>
+            </div>
+        </div>
+		 <br>
+		 <div class="rows">
+		  <div class="col-md-offset-2">
+			  <p>Wanna reach out...! Send me a quick message from below...</p>
+		  </div>
+	     </div>
+		 <br>
+		 <div class="rows">
+			  <div class="col-md-12 col-md-offset-3">
+                <form>{% csrf_token %}
+                     <div class="form-group row-fluid">
+                            <div class="input-group col-md-8">
+                                <div class="col-md-5 form_val">
+                                    <input type="text" name="full_name" class="form-control" id="nameField" placeholder="Enter your Name(required)" >
+                                </div>
+                            </div>
+                              <div class="input-group col-md-8">
+                                <div class="col-md-5 form_val">
+                                    <input type="text" name="phone_num" class="form-control" id="contact" placeholder="Enter your contact (optional)" >
+                                </div>
+                             </div>
+                              <div class="input-group col-md-8">
+                                 <div class="col-md-5 form_val">
+                                     <input type="email" name="email" class="form-control " id="emailField" placeholder="Enter your email (required)" >
+                                 </div>
+                             </div>
+                             <div class="input-group col-md-8">
+                                  <div class="col-md-5 form_val">
+                                     <input type="text"  name="company" class="form-control " id="companyField" placeholder="Enter your company name (optional)" >
+                                 </div>
+                             </div>
+                              <div class="input-group col-md-8">
+                                  <div class="col-md-7 form_val">
+                                     <input type="text"  name="subject" class="form-control " id="subjectField" placeholder="Enter subject (required)" >
+                                 </div>
+                             </div>
+                              <div class="input-group col-md-8 form_val">
+                                <div class="col-md-7">
+                                   <textarea rows="4" cols="88" name="content" class="form-control content" id="messageField" placeholder="Type your message here...(optional)"></textarea>
+                                </div>
+                             </div>
+                             <div class="col-md-offset-1">
+                                <button type="submit" id="messageBtn" class="btn btn-success">Sent</button>
+                            </div>
+                    </div>
+                </form>				  			  
+			  </div>			  
+          </div>
+
+    <!-- /.container -->
+    
+    <!-- jQuery -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/static/js/bootstrap.min.js"></script>
+
+    <script src="/static/js/jquery.validate.min.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="/static/js/additional-methods.min.js"></script>
+    <script src="/static/js/thebigpicture.js"></script>
+    <!--<script type="text/javascript" src="/static/js/jquery.tooltipster.min.js"></script>-->
+
+
+   </div>
+    <!--Resume Modal-->
+   <!-- {% block modal %}{% endblock %}-->
+   <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg ">
+            <div class="modal-content">
+             <div class="modal-header">
+                <div class="container-fluid headerModal">
+                        <div class="col-md-12">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                            <h2 class="modal-title title" id="resumeModal">RAHUL SHARMA</h2>
+                         </div>
+                         <div class="col-md-8">
+                                  <small>
+                                    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> <span class="text-info details" >rahul8448@gmail.com</span><br>
+                                    <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span></span></span> </span> <span class="text-info details">402-318-2071</span><br>
+                                    <span class="glyphicon glyphicon-home" aria-hidden="true"> </span> <span class="text-info details">8621 West 131st Ter,Overland Park KS 66213</span><br>
+                                  </small>
+                          </div>
+                    <div class="col-md-4">
+                          <div class="btn_group_dwn_prnt btn-group-sm" role="group">
+                              <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Download.pdf"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+                              <a href="#" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Print"><span class="glyphicon glyphicon-print" aria-hidden="true"></span></a>
+                         </div>
+                     </div>
+                 </div>
+               </div>
+
+                <div class="modal-body">
+                     <div class="container-fluid">
+                         <div class="row ">
+                             <div class="col-md-3">
+                                 <h3 class="title"><span class="glyphicon glyphicon-pushpin"></span><br>SUMMARY</h3>
+                             </div>
+                             <div class="col-md-9 row-fluid">
+                                 <ul class="summary summary_text">
+                                  <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Java/Python Full stack Web Application developer.</li>
+                                  <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Consistent contributor to Github.</li>
+                                  <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Member of the first place winning team at <a href="http://www.agilx.com/2013-software-builders-challenge/">2013 Nebraska Software Builders Challenge.</a></li>
+                                  <li><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Over 5 years of experience in Software Development.</li>
+                                </ul>
+                             </div>
+                         </div>
+                         <hr>
+                         <div class="row">
+                             <div class="col-md-3">
+                                 <h3 class="title"><span class="glyphicon glyphicon-pushpin"></span><br>TECHNICAL SKILLS</h3>
+                             </div>
+                             <div class="col-md-9">
+                                 <div class="col-md-4 ">
+                                      <div class="dropdown">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
+                                            Select a Category
+                                          <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Languages</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">FrameWorks</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Databases</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Front-End</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Testing</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Content-Management</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Web-Services</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Concepts</a></li>
+                                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Others</a></li>
+                                        </ul>
+                                      </div>
+                                       <div class="radio">
+                                            <label>
+                                              <input type="radio" id="barchart" name="display" value="barchart"> View as Barchart
+                                            </label>
+                                             <!--<label>For future
+                                              <input type="radio"  id="piechart" name="display" value="piechart"> View as Piechart
+                                            </label>-->
+                                             <label>
+                                              <input type="radio" id="tabular" name="display" value="tabular"> View as Tabular
+                                            </label>
+                                       </div>
+                                 </div>
+                                 <div class="col-md-8  row category table-responsive">
+                                       <!--<div class="pie-chart">For Future
+
+
+                                       </div>-->
+                                        <div class="tabular">
+                                           <table class="table skill_table table-striped table-condensed">
+                                             <thead>
+                                              <tr>
+                                                <th><h3>Current Category:<span id="current_category">Languages</span></h3></th>
+                                              </tr>
+                                            </thead>
+                                             <tbody>
+                                            </tbody>
+                                          </table>
+                                      </div>
+                                      <div class="chart">
+
+                                      </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <hr>
+
+                         <div class="row">
+                             <div class="col-md-3 text-bottom ">
+                                 <h3 class="title"><span class="glyphicon glyphicon-pushpin"></span><br>WORK EXPERIENCE</h3>
+                             </div>
+                             <div class="col-md-9">
+                                   <div class="row-fluid table-responsive summary_text">
+                                      <table class="table table-hover">
+                                      <tbody>
+                                        <tr >
+                                          <td>Cerner Corporation</td>
+                                          <td>Software Engineer</td>
+                                          <td>Aug 2013 - current</td>
+                                          <td>
+                                              <a href="#" data-toggle="popover" class="more-info-cerner more-info">
+                                                 <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                              </a>
+                                          </td>
+                                        </tr>
+                                          <!-- Popover hidden content Cerner -->
+                                          <div id="content_Cerner" style="display: none">
+                                            <div class="row-fluid">
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Build standalone and web based internal tools for Cerner</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Perform code analysis to identify bugs/errors or enhancements requests involving Cerner applications</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Interact with clients/end users to understand and formulate requirements</p>
+                                            </div>
+                                          </div>
+
+                                         <tr >
+                                          <td>University of Nebraska Lincoln</td>
+                                          <td>Web Application Developer</td>
+                                          <td>Aug 2010 - Mar 2013</td>
+                                          <td>
+                                              <a href="#" data-toggle="popover" class="more-info-unl more-info">
+                                                   <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                              </a>
+                                          </td>
+                                        </tr >
+                                           <!-- Popover hidden content UNL -->
+                                          <div id="content_unl" style="display: none">
+                                            <div class="row-fluid">
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Design and Develop Java/PHP web application for various departments within the University.</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Provide enhancements to existing application when client requests.</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Provide code fix, database changes, environment change etc. whenever required.</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Develop and maintain PHP based sites implementing open source frameworks like Code Igniter
+and Tank Authentication and technologies like Apache Cocoon for xml to html conversion.</p>
+                                            </div>
+                                          </div>
+                                        <tr>
+                                          <td>Accenture Corporation</td>
+                                          <td>Software Engineer</td>
+                                          <td>May 2008 - Jun 2010</td>
+                                          <td>
+                                               <a href="#" data-toggle="popover" class="more-info-acc more-info">
+                                                   <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                              </a>
+                                          </td>
+                                        </tr>
+                                       <div id="content_acc" style="display: none">
+                                            <div class="row-fluid">
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Develop, maintain and support Java/J2EE Enterprise application for a UK based client.</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Provide planning, estimation, design and development for new functionality, enhancements and
+
+upgrade that client requests.</p>
+                                             <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Monitor daily batches that process xml files and generate a report based on them, to be sent to the
+
+UK team.</p>
+                                                <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span><p class="content-details">Mentor new and junior engineers on functional and technical aspects.</p>
+                                            </div>
+                                          </div>
+                                      </tbody>
+                                      </table>
+                                   </div>
+                                   <div class="col-lg-6"></div>
+                                   <div class="col-lg-1"></div>
+                                   <div class="col-lg-3"></div>
+                           </div>
+                         </div>
+                         <hr>
+                         <div class="row">
+                           <div class="col-md-3 text-left">
+                               <h3 class="title"><span class="glyphicon glyphicon-pushpin"> </span><br> EDUCATION</h3>
+                            </div>
+
+                             <div class="col-md-9 summary_text">
+                                 <table class="table table-hover">
+                                      <tbody>
+                                        <tr >
+                                          <td>Masters in Computer Science</td>
+                                          <td>University of Nebraska Lincoln</td>
+                                          <td>Aug 2010 - May 2013</td>
+                                        </tr>
+                                        <tr >
+                                          <td>Bachelor in Electronic Engineering</td>
+                                          <td>Bangalore University</td>
+                                          <td>Sep 2003 - Dec 2007</td>
+                                        </tr>
+                                      </tbody>
+                                 </table>
+                             </div>
+                         </div>
+                     </div>
+                </div>
+                <div class="modal-footer">
+
+               </div>
+            </div>
+         </div>
+   </div>
+
+ </body>
+</html>
+
+

@@ -1,13 +1,14 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-import personal_page.urls
+admin.autodiscover()
+
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'personal_site.views.home', name='home'),
+    # url(r'^$', 'Jerico.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include(personal_page.urls)),
-    url(r'^msg/send$', include(personal_page.urls)),
+    url(r'^$', 'personal_page.views.render_landing_page'),
+    url(r'^msg/send$', 'personal_page.views.post_message'),
 )

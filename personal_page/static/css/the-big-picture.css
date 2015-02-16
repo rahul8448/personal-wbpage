@@ -1,0 +1,281 @@
+/*!
+* Start Bootstrap - The Big Picture HTML Template (http://startbootstrap.com)
+* Code licensed under the Apache License v2.0.
+* For details, see http://www.apache.org/licenses/LICENSE-2.0.
+*/
+
+body {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background: none;
+}
+
+
+.full{
+    background: url(../images/landing.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+
+.main_text h1{
+    margin-top:-5%;
+    color:#FFFFFF;
+    font-weight: bold;
+    font-size: 300%;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+.btn {
+     width:15%;
+     font-size: 1.4em;
+     font-weight: bold;
+     text-align:center-right;
+     box-shadow: 10px 10px 5px #000000;
+}
+
+.btn:hover{
+  opacity: 0.5;
+}
+
+p{
+    color:#FFFFFF;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 150%;
+    font-weight:bold;
+    text-wrap:normal;
+    text-align:justify;
+}
+
+p strong.imp1{
+    color:#FFC0C0;
+    font-size: 155%;
+}
+
+p strong.imp1 {
+    color:#FFC0C0;
+    font-size: 155%;
+}
+
+p strong.imp2{
+    color:#80C0FF;
+    font-size: 155%;
+}
+p strong.imp3 {
+    color:#80FFFF;
+    font-size: 155%;
+}
+
+a{
+    font-weight:bold;
+    font-size: 100%;
+}
+
+.input-group {
+    margin-bottom:1%;
+}
+
+.help-block {
+    font-weight:bold;
+    font-family: 'Crete Round', serif;
+    font-size: 130%;
+}
+
+.lead{
+    color: black;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 150%;
+    font-weight:bold;
+    text-wrap:normal;
+    text-align:justify;
+}
+
+.text{
+    color: black;
+    font-size: 115%;
+    font-family: 'Roboto Slab', serif;
+}
+
+.title{
+    color: black;
+    font-size: 150%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+}
+
+.details{
+    font-size: 110%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+}
+
+.content-details{
+    font-size: 110%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+    text-align:left;
+    color:black;
+}
+
+.summary{
+  list-style-type: none;
+}
+
+.summary_text{
+    font-size: 120%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+}
+
+.btn_group_dwn_prnt{
+    float:right;
+    width:50%;
+    margin-top:7.5%;
+}
+
+
+.btn_group_dwn_prnt a{
+    border:1px solid #7eb9d0; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;text-shadow: -1px -1px 0 rgba(0,0,0,0.3);font-weight:bold; color: #FFFFFF;
+    background-color: #a7cfdf; background-image: -webkit-gradient(linear, left top, left bottom, from(#a7cfdf), to(#23538a));
+    background-image: -webkit-linear-gradient(top, #a7cfdf, #23538a);
+    background-image: -moz-linear-gradient(top, #a7cfdf, #23538a);
+    background-image: -ms-linear-gradient(top, #a7cfdf, #23538a);
+    background-image: -o-linear-gradient(top, #a7cfdf, #23538a);
+    background-image: linear-gradient(to bottom, #a7cfdf, #23538a);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#a7cfdf, endColorstr=#23538a);
+}
+
+.btn_group_dwn_prnt a:hover{
+    border:1px solid #5ca6c4;
+    background-color: #82bbd1; background-image: -webkit-gradient(linear, left top, left bottom, from(#82bbd1), to(#193b61));
+    background-image: -webkit-linear-gradient(top, #82bbd1, #193b61);
+    background-image: -moz-linear-gradient(top, #82bbd1, #193b61);
+    background-image: -ms-linear-gradient(top, #82bbd1, #193b61);
+    background-image: -o-linear-gradient(top, #82bbd1, #193b61);
+    background-image: linear-gradient(to bottom, #82bbd1, #193b61);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#82bbd1, endColorstr=#193b61);
+}
+
+.btn_group_dwn_prnt a{
+    box-shadow:none;
+    font-size: 100%;
+    width:40%;
+    margin-right:2%;
+}
+
+.headerModal{
+   margin-top:1.5%;
+}
+
+
+.popover-title {
+    font-size: 110%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+    text-align:left;
+}
+
+.popover {
+    width:70%;
+    height:auto;
+}
+
+.modal-dialog{
+   width:60%;
+}
+
+.more-info{
+   font-size:150%;
+}
+
+.dropdown{
+  margin-top:5%;
+  width:70%;
+}
+
+.dropdown button.btn{
+    width:105%;
+    font-size: 110%;
+    font-family: 'Roboto Slab', serif;
+    font-weight:bold;
+    text-align:left;
+    box-shadow:none;
+    -webkit-box-shadow: 4px 6px 5px 0px rgba(112,106,107,1);
+    -moz-box-shadow: 4px 6px 5px 0px rgba(112,106,107,1);
+    box-shadow: 4px 6px 5px 0px rgba(112,106,107,1);
+}
+
+.dropdown button.btn span.caret{
+   margin-left:5%;
+}
+
+.category{
+   margin-top:-4%;
+}
+
+.category h3{
+  font-size: 100%;
+  font-family: 'Roboto Slab', serif;
+  font-weight:bold;
+  text-align:center;
+  margin-left:35%;
+
+}
+
+.radio{
+    margin-top:20%;
+    font-weight:bold;
+    font-family: 'Roboto Slab', serif;
+}
+
+.bar-chart{
+  margin-top:0%;
+
+}
+
+rect.bar-text {
+  font-family: 'Roboto Slab', serif;
+  font-weight:bold;
+  font-size: 60%;
+  color:black;
+
+}
+
+.x-axis{
+  font-size: 80%;
+  font-family: 'Roboto Slab', serif;
+ }
+
+
+rect.bar:hover {
+  opacity:0.5;
+}
+
+.chart{
+
+ margin-right:15%;
+
+}
+
+@media all and (max-width: 1800px) { /* screen size until 1200px */
+    .dropdown button.btn{
+        font-size: 1em; /* 1.5x default size */
+    }
+}
+
+@media all and (max-width: 1451px) { /* screen size until 1200px */
+    .dropdown button.btn{
+        font-size: .65em; /* 1.5x default size */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+

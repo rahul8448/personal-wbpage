@@ -1,5 +1,5 @@
 """
-Django settings for personal_site project.
+Django settings for Jerico project.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/1.7/topics/settings/
@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1m2y2o$wyp@a3qj_wm_w&c($08x7+zgqb8a&7jf#t7n059cd3#'
+SECRET_KEY = '6ll@pmrwj@xfl&5wk5i1c%s9k9aw(b*f6u@partt2%#+&_%b6h'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
+
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -36,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'personal_page',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -49,9 +51,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'personal_site.urls'
+ROOT_URLCONF = 'personal_page.urls'
 
-WSGI_APPLICATION = 'personal_site.wsgi.application'
+WSGI_APPLICATION = 'personal_page.wsgi.application'
 
 
 # Database
@@ -81,39 +83,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR)
+
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS=(
+
+    os.path.join(BASE_DIR,'personal_page/static'),
+)
 
 
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
-            'datefmt' : "%d/%b/%Y %H:%M:%S"
-        },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
-        },
-    },
-    'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'personal_site.log',
-            'formatter': 'verbose'
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers':['file'],
-            'propagate': True,
-            'level':'DEBUG',
-        },
-        'personal_page': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-        },
-    }
-}
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'personal_page/templates'),
+)
+
+

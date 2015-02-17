@@ -96,3 +96,6 @@ STATICFILES_DIRS = (
     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/static'),
 )
 
+TEMPLATE_DIRS = (
+    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/templates'),
+)

@@ -5,4 +5,4 @@ class MessageForm(forms.ModelForm):
 
     class Meta:
         model=Message
-        exclude = ['create_time','update_time']
+        exclude = ['create_time','update_time   ']

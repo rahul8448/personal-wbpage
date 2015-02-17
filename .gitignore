@@ -1,4 +1,4 @@
 .elasticbeanstalk/
 personal_site.log
 static_assets
-.idea/
+.idea

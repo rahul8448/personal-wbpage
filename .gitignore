@@ -2,7 +2,7 @@
 personal_site.log
 static_assets
 .idea/
-
+test_app/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

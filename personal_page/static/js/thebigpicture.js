@@ -58,11 +58,11 @@ $(document).ready(function() {
         },
         messages: {
             full_name: {
-                required: "Name field cannot be empty",
+                required: "Name field cannot be empty"
 
             },
             phone_num: {
-                phoneUS: "Number should be a valid US number",
+                phoneUS: "Number should be a valid US number"
 
             },
             subject: {
@@ -92,10 +92,8 @@ $(document).ready(function() {
 
     //Post data from message to database
     var submitData = function() {
-
         //Sending json data
         $.ajax({
-
                 url: "/msg/send",
                 type: 'POST',
                 data: {
@@ -116,7 +114,6 @@ $(document).ready(function() {
             }).done(function(data, status, d) {
 
                 if (status == 'success') {
-
                     $('#nameField').val('');
                     $('#contact').val('');
                     $('#emailField').val('');
@@ -126,7 +123,7 @@ $(document).ready(function() {
                     $('<div class="alert alert-success alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Well done!</strong> Your message has been successfully sent.</strong></div>').appendTo('.form-group');
                     $('.alert').css({
                         "width": "50%",
-                        "margin-top": "1%",
+                        "margin-top": "1%"
                     });
 
                 }
@@ -137,12 +134,32 @@ $(document).ready(function() {
                 $('<div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><strong>Ooops..!</strong> Your message could not be sent at this moment.Try again later</strong></div>').appendTo('.form-group');
                 $('.alert').css({
                     "width": "50%",
-                    "margin-top": "1%",
+                    "margin-top": "1%"
                 });
 
             })
 
     }
+
+    //Ajax request for downloading resume from server
+    /*var download_resume=function(){
+        $.ajax({
+                url: "/static/data/Rahul_Sharma_Resume.pdf",
+                type: 'GET'
+               }).done(function(data, status, d) {
+
+                if (status == 'success') {
+
+
+
+                }
+
+            })
+            .fail(function() {
+
+
+            })
+    }*/
 
     $(".navbar-nav").children().click(function(e) {
 
@@ -215,6 +232,12 @@ $(document).ready(function() {
 
      /*Load data*/
      var skillData=getData();
+
+    /*Loading selection category*/
+    $.each(skillData(),function(key,value){
+        var category=value["category"];
+        $( ".dropdown-menu" ).append( "<li role='presentation'><a role='menuitem' tabindex='-1' href='#'>"+category+"</a></li>" );
+    });
 
     /*Default checkbox selection:Tabular*/
     $("#tabular").prop("checked", true);
@@ -382,6 +405,16 @@ $(document).ready(function() {
 
       }
 
+      /*
+      Download resume on download button click
+      */
+
+      $('.download_btn').click(function(event){
+
+            event.preventDefault();
+            window.open($(this).attr("href"), "popupWindow", "width=600,height=600,scrollbars=yes");
+
+      });
       //For future
      /* var generatePieChart=function(current_category){
 

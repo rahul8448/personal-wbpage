@@ -260,5 +260,30 @@
             }
 
         ]
+    },
+      {
+
+        "category": "Web Container/Deployment",
+        "content": [
+            {
+                "name": "OC4j",
+                "experience": "2-3 years",
+                "color": "#FFD54F",
+                "exp_words":"Competent"
+            },
+            {
+                "name": "Tomcat",
+                "experience": "2-3 years",
+                "color": "#E57373",
+                 "exp_words":"Competent"
+            },
+            {
+                "name": "AWS",
+                "experience": "1-2 years",
+                "color": "#A1887F",
+                 "exp_words":"Advanced-Beginner"
+            }
+
+        ]
     }
 ]

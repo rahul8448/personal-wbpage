@@ -32,7 +32,7 @@ body {
      width:15%;
      font-size: 1.4em;
      font-weight: bold;
-     text-align:center-right;
+     text-align:center;
      box-shadow: 10px 10px 5px #000000;
 }
 
@@ -133,6 +133,7 @@ a{
     float:right;
     width:50%;
     margin-top:7.5%;
+    margin-right:-30%;
 }
 
 
@@ -180,12 +181,22 @@ a{
     height:auto;
 }
 
-.modal-dialog{
+.modal-lg{
    width:60%;
 }
 
 .more-info{
    font-size:150%;
+}
+
+.modal-sm{
+
+     font-size: 200%;
+     font-family: 'Gloria Hallelujah', cursive;
+     font-weight:bold;
+     height:100%;
+     text-align:center ;
+
 }
 
 .dropdown{

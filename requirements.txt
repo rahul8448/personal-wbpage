@@ -1,2 +1,10 @@
 Django==1.7.4
-
+PyYAML==3.11
+argparse==1.2.1
+awsebcli==3.1
+boto==2.36.0
+cement==2.4.0
+jmespath==0.6.1
+python-dateutil==2.4.0
+six==1.9.0
+wsgiref==0.1.2

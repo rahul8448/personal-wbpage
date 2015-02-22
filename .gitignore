@@ -1,6 +1,6 @@
 .elasticbeanstalk/
 personal_site.log
-static_assets
+static/
 .idea/
 test_app/
 # Elastic Beanstalk Files

@@ -1,7 +1,8 @@
 .elasticbeanstalk/
 personal_site.log
+static/
 .idea/
-
+test_app/
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml

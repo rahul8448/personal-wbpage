@@ -90,9 +90,11 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
 
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/static'),
+     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/static'),
+     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'message_dashboard/static'),
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/templates'),
+     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/templates'),
+     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'message_dashboard/templates'),
 )

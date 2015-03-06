@@ -11,4 +11,8 @@ urlpatterns = patterns('',
     url(r'^$', 'personal_page.views.render_landing_page'),
     url(r'^msg/send$', 'personal_page.views.post_message'),
     url(r'^download/resume$', 'personal_page.views.download_resume'),
+    url(r'^msg_board/login$', 'message_dashboard.views.login_view'),
+    url(r'^msg_board/authenticate$', 'message_dashboard.views.login_view'),
+    url(r'^msg_board/logout$', 'message_dashboard.views.logout_view'),
+
  )

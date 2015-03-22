@@ -98,7 +98,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/templates'),
+     os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'personal_page/templates'),
      os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'message_dashboard/templates'),
 )
 
@@ -129,6 +129,10 @@ LOGGING = {
             'level':'DEBUG',
         },
         'personal_page': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+        'message_dashboard': {
             'handlers': ['file'],
             'level': 'DEBUG',
         },

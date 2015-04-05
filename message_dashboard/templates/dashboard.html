@@ -1,1 +1,210 @@
-<h1>You are logged in</h1>
+<div class="dashboard container-fluid">
+<input type="hidden" name="isValid" value="True">
+    <div class="row header">
+        <h2>Message Dashboard</h2>
+    </div>
+    <div class="row login_bar">
+         <div class="col-sm-8 ">
+                 <div class="col-lg-5 col-lg-offset-3 search_bar">
+                   <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Search for...">
+                     <span class="input-group-btn">
+                       <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.col-lg-6 -->
+
+
+         </div>
+        <div class="col-sm-4">
+             <div class="btn-group logout_btn">
+                  <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Hello {{username}}</button>
+                  <button type="button" class="btn btn-default btn-lg dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                     <li><a href="#">Profile</a></li>
+                     <!--<li><a href="#">Setting</a></li>
+                     <li><a href="#">Something else here</a></li>-->
+                     <li class="divider"></li>
+                     <li><a  href="/msg_board/logout">Logout</a></li>
+                  </ul>
+             </div>
+         </div>
+    </div>
+    <div ng-app="dashboardApp">
+        <div class="row ">
+            <div class="col-sm-2">
+
+            </div>
+
+            <div class="col-sm-10">
+
+            </div>
+            <hr>
+        </div>
+
+        <div class="row body">
+         <!--***************-SIDEBAR START*************************--->
+
+        <div class="side_bar col-sm-4">
+              <div class="container">
+                    <!--<div class="row-fluid">-->
+                        <div class="col-sm-3">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                                            </span>Inbox</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><a href="#">Last 24-hours</a>
+                                                         <span class="badge">4</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><a href="#">Last 7-days</a>
+                                                         <span class="badge">15</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><a href="#">Last 30-days</a>
+                                                         <span class="badge">25</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span><a href="#">All</a>
+                                                        <span class="badge">42</span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search a Category</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                          <form name="searchForm" ng-controller="searchOptionsController" novalidate>
+                                            <table class="table">
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                              <input type="email" name="email" class="form-control" placeholder="Enter an email id" ng-model="values.email">
+                                                               <!--Error message if email validation fails-->
+                                                               <div class=" col-sm-12 error_msg error alert alert-danger" role="alert" ng-show="searchForm.email.$error.email && submitted"  >
+                                                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                                     <span class="sr-only">Error:</span> Enter a valid email address
+                                                               </div>
+
+                                                            </div><!-- /input-group -->
+                                                        </div><!-- /.col-lg-6 -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                              <input type="text" name="company" class="form-control" placeholder="Enter a Company name" ng-model="values.company">
+                                                            </div><!-- /input-group -->
+                                                         </div><!-- /.col-lg-6 -->
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                       <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                                  <input type="text" name="person" class="form-control" placeholder="Enter a Person Name" ng-model="values.person">
+                                                             </div><!-- /input-group -->
+                                                         </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                       <div class="col-sm-12">
+                                                         <div class="input-group">
+                                                              <input type="text" name="keyword" class="form-control" placeholder="Enter a Keyword" ng-model="values.keyword">
+                                                         </div><!-- /input-group -->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                      <div class='col-sm-12'>
+                                                            <div class="form-group">
+                                                                <div class='input-group date' id='datePicker1'>
+                                                                    <input type='text' name="startDate" class="form-control" placeholder="Start (mm/dd/yyyy)" ng-model="values.startDate" ng-change="isInValid=dateValidation()"/>
+                                                                    <span class="input-group-addon">
+                                                                        <a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                       </div>
+                                                       <div class='col-sm-12'>
+                                                            <div class="form-group">
+                                                                <div class='input-group date' id='datePicker2' >
+                                                                    <input type='text' name="endDate" class="form-control" placeholder="End (mm/dd/yyyy)" ng-model="values.endDate" ng-change="isInValid=dateValidation()"/>
+                                                                    <span class="input-group-addon">
+                                                                        <a href="#"><span class="glyphicon glyphicon-calendar"></span></a>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                       </div>
+                                                        <div class="col-sm-12">
+                                                            <div class="input-group">
+                                                               <!--Error message if email validation fails-->
+                                                               <div class=" col-sm-12 error_msg_date error alert alert-danger" role="alert" ng-show="isInValid && submitted">
+                                                                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                                     <span class="sr-only">Error:</span> Start date is greater than end date
+                                                               </div>
+                                                            </div><!-- /input-group -->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                       <div class="col-sm-11 ">
+                                                          <div class="input-group reset_go_button">
+                                                                <button type="button" class="btn btn-success" ng-click="submitted=true;isInValid=dateValidation()">GO</button>
+                                                                <button type="button" class="btn btn-success" ng-click=" submitted=false;resetSearchForm()">RESET</button>
+                                                           </div><!-- /input-group -->
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                      </div>
+                   <!--</div>-->
+                </div>
+           </div>
+            <!--***************-SIDEBAR END*************************--->
+            <div class="messages col-sm-8">
+                <h1>messages</h1>
+            </div>
+        </div>
+         <div class="row footer">
+             <h4><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2015 Copyright</h4>
+        </div>
+    </div>
+</div>
+

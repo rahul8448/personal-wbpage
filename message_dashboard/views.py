@@ -3,37 +3,41 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 import logging
-import json
+
 
 
 logger = logging.getLogger(__name__)
 
-#Create your views here.
+'''
+This is the base_view for login page
+'''
 def base_view(request):
 
     logger.debug("Entering login_view method")
     c={}
-    #c['isLogged']=False;
-    #c['status']="Is not logged in"
     c.update(csrf(request))
+
+    redirectUrl= isUserLogged(request)
+    if redirectUrl is not None:
+        return redirectUrl
 
     logger.debug("Exiting login_view method")
     return render_to_response('base.html',c)
 
 
-#Create auth_view
+'''
+This is the method to authenticate user credentials
+'''
 def auth_view(request):
 
     logger.debug("Entering auth_view method")
     logger.debug(request.body)
 
-    if request.method == "POST":
-       #Converting string to json
-       #postJson=json.loads(request.body)
-       #Extracting username and password
-       #user_name=postJson['user_name']
-       #pass_word=postJson['pass_word']
+    redirectUrl= isUserLogged(request)
+    if redirectUrl is not None:
+        return redirectUrl
 
+    if request.method == "POST":
        user_name=request.POST.get('email','')
        pass_word=request.POST.get('password','')
 
@@ -43,38 +47,37 @@ def auth_view(request):
 
        if user is not None:
             auth.login(request,user)
-            c={}
-            c['isLogged']=True
-            c['status']="Is logged in"
-            c.update(csrf(request))
-            logger.debug(c)
             logger.debug("Logged in")
             logger.debug("Exiting auth_view method")
-            #return HttpResponseRedirect('/msg_board/logged_in')
-            return render_to_response('base.html',c)
+            return HttpResponseRedirect('/msg_board')
 
-    c={}
-    c['isLogged']=False
-    c['status']="Is not logged in"
-    c.update(csrf(request))
-    logger.debug(c)
     logger.debug("not logged in")
     logger.debug("Exiting auth_view method")
-    #return HttpResponseRedirect('/msg_board/not_logged_in');
-    return render_to_response('base.html',c)
+    return HttpResponseRedirect('/msg_board')
 
+'''
+This is a helper method to check if the user was already logged in
+'''
+def isUserLogged(request):
+    logger.debug("Entering isUserLogged method")
+    if request.user.is_authenticated():
+       c={}
+       c.update(csrf(request))
+       c['isLogged']=True
+       c['username']=request.user.username
+       logger.debug("Exiting isUserLogged method method")
+       return render_to_response('base.html',c)
 
 
 '''
-def login_view(request):
-
-    logger.debug("Enter logged in")
-    logger.debug("Exiting logged in")
-    if request.user.is_authenticated:
-      return render_to_response('dashboard.html')
-    else:
-        return render_to_response('not_logged_in')
+This is the logout view
 '''
+def logout_view(request):
+    logger.debug('Entering the logout_view')
+    #logger.debug(request._get_request)
+    auth.logout(request)
+    logger.debug('Exiting the logout_view')
+    return HttpResponseRedirect('/msg_board')
 
 
 

@@ -16,6 +16,8 @@ urlpatterns = patterns('',
     url(r'^msg_board/logout$', 'message_dashboard.views.logout_view'),
     #url(r'^msg_board/logged_in$', 'message_dashboard.views.login_view'),
     #url(r'^msg_board/not_logged_in$', 'message_dashboard.views.login_view'),
-
+    url(r'^search/email$', 'message_dashboard.views.searchEmail_view'),
+    url(r'^search/org$', 'message_dashboard.views.searchCompany_view'),
+    url(r'^search/name$', 'message_dashboard.views.searchName_view'),
 
 )

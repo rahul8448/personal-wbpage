@@ -2,7 +2,15 @@ from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
+from django.views.decorators.csrf import csrf_exempt
 import logging
+#import json
+from models import DashBoard_Messages
+from django.core import serializers
+from django.http import HttpResponse
+
+
+
 
 
 
@@ -80,8 +88,78 @@ def logout_view(request):
     return HttpResponseRedirect('/msg_board')
 
 
+'''
+This is the view for the searching email term.
+'''
+
+@csrf_exempt
+def searchEmail_view(request):
+
+    logger.debug("Entering search email method")
+
+    if request.method=="POST":
+        #data=json.loads(request.body)
+        #logger.debug(data)
+        #search_term=data['search_term']
+        search_term=request.POST.get('search_term')
+        logger.debug('TERM:'+search_term);
+    else:
+     search_term=''
+
+    emails= DashBoard_Messages.objects.filter(sender_email__contains=search_term)
+
+    json_response = serializers.serialize('json', emails,fields=('sender_email'))
+    logger.debug(json_response)
+    logger.debug("Exiting search email method")
+    return HttpResponse(json_response, content_type='application/json')
 
 
 
+'''
+This is the view for the searching company term.
+'''
 
+@csrf_exempt
+def searchCompany_view(request):
+
+    logger.debug("Entering search org method")
+
+    if request.method=="POST":
+        #data=json.loads(request.body)
+        #logger.debug(data)
+        search_term=request.POST.get('search_term')
+        logger.debug('TERM:'+search_term);
+    else:
+     search_term=''
+
+    orgs= DashBoard_Messages.objects.filter(sender_organization__contains=search_term)
+
+    json_response = serializers.serialize('json', orgs,fields=('sender_organization'))
+    logger.debug(json_response)
+    logger.debug("Exiting search org method")
+    return HttpResponse(json_response, content_type='application/json')
+
+'''
+This is the view for the searching person term.
+'''
+
+@csrf_exempt
+def searchName_view(request):
+
+    logger.debug("Entering search name method")
+
+    if request.method=="POST":
+        #data=json.loads(request.body)
+        #logger.debug(data)
+        search_term=request.POST.get('search_term')
+        logger.debug('TERM:'+search_term);
+    else:
+     search_term=''
+
+    name= DashBoard_Messages.objects.filter(sender_name__contains=search_term)
+
+    json_response = serializers.serialize('json', name,fields=('sender_name'))
+    logger.debug(json_response)
+    logger.debug("Exiting search name method")
+    return HttpResponse(json_response, content_type='application/json')
 

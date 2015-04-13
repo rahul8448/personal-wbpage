@@ -1,3 +1,4 @@
+
 <div class="dashboard container-fluid">
 <input type="hidden" name="isValid" value="True">
     <div class="row header">
@@ -98,20 +99,34 @@
                                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>Search a Category</a>
                                         </h4>
                                     </div>
+
                                     <div id="collapseTwo" class="panel-collapse collapse">
                                         <div class="panel-body">
-                                          <form name="searchForm" ng-controller="searchOptionsController" novalidate>
+                                           <form name="searchForm" ng-controller="searchOptionsController" novalidate>
                                             <table class="table">
                                                 <tr>
                                                     <td>
                                                         <div class="col-sm-12">
                                                             <div class="input-group">
-                                                              <input type="email" name="email" class="form-control" placeholder="Enter an email id" ng-model="values.email">
+                                                               <!-- ng-pattern="/^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/"-->
+                                                              <input type="email" id="email_id" id="email_id" name="email" class="form-control typeahead" list="json-datalist" autocomplete="off" placeholder="Enter an email id" ng-model="values.email">
+                                                             <!-- {% verbatim %}
+                                                              <datalist id="json-datalist">
+                                                                  <option ng-repeat="x in emails" value=" {{ x.fields.sender_email }}">
+                                                              </datalist>
+                                                              {% endverbatim %}-->
                                                                <!--Error message if email validation fails-->
-                                                               <div class=" col-sm-12 error_msg error alert alert-danger" role="alert" ng-show="searchForm.email.$error.email && submitted"  >
+                                                               <div class=" col-sm-12 error_msg error alert alert-danger" role="alert" ng-show="searchForm.$error.email && submitted"  >
                                                                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                                      <span class="sr-only">Error:</span> Enter a valid email address
                                                                </div>
+                                                               <!--<ul>
+                                                                  <li ng-repeat="x in emails">
+                                                                    {% verbatim %}
+                                                                    {{ x.fields.sender_email }}
+                                                                    {% endverbatim %}
+                                                                  </li>
+                                                                </ul>-->
 
                                                             </div><!-- /input-group -->
                                                         </div><!-- /.col-lg-6 -->
@@ -120,8 +135,8 @@
                                                 <tr>
                                                     <td>
                                                         <div class="col-sm-12">
-                                                            <div class="input-group">
-                                                              <input type="text" name="company" class="form-control" placeholder="Enter a Company name" ng-model="values.company">
+                                                            <div class="input-group"  >
+                                                              <input type="text" name="company" id="org" class="form-control typeahead"  data-provide="typeahead" placeholder="Enter a Company name" ng-model="values.company">
                                                             </div><!-- /input-group -->
                                                          </div><!-- /.col-lg-6 -->
                                                     </td>
@@ -130,7 +145,7 @@
                                                     <td>
                                                        <div class="col-sm-12">
                                                             <div class="input-group">
-                                                                  <input type="text" name="person" class="form-control" placeholder="Enter a Person Name" ng-model="values.person">
+                                                                  <input type="text" name="person"  id="name_id" class="form-control typeahead" placeholder="Enter a Person Name" ng-model="values.person">
                                                              </div><!-- /input-group -->
                                                          </div>
                                                     </td>
@@ -200,6 +215,11 @@
             <!--***************-SIDEBAR END*************************--->
             <div class="messages col-sm-8">
                 <h1>messages</h1>
+                <input  ng-model="test" type="text">
+                {% verbatim %}
+                {{test}}
+                {% endverbatim %}
+
             </div>
         </div>
          <div class="row footer">
@@ -207,4 +227,4 @@
         </div>
     </div>
 </div>
-
+<link href="/static/css/dashboard.css" rel="stylesheet">

@@ -12,6 +12,7 @@ from datetime import date, timedelta
 from django.utils import timezone
 import logging
 import json
+import datetime
 from message_dashboard.models import DashBoard_Messages
 from message_dashboard.serializers import DashBoard_MessagesSerializer
 
@@ -188,7 +189,7 @@ def searchDB_view(request):
     logger.debug("Exiting DB view method")
     return HttpResponse(json_response, content_type='application/json')
 
-###Below are Rest methods############################################
+##############################Below are Rest methods################################################################################################3
 '''
  Get messages from database and return a json response.
 '''
@@ -224,7 +225,9 @@ def get_messages(request):
     logger.debug("Exiting get_messages method")
     return Response(serialized_output.data,status=status.HTTP_200_OK)
 
-
+'''
+This is the rest method which will be invoked something is searched on side bar under search.
+'''
 @api_view(['GET'])
 def search_messages(request):
 
@@ -244,11 +247,63 @@ def search_messages(request):
     logger.debug(start_date)
     logger.debug(end_date)
 
-    messages=DashBoard_Messages.objects.filter(sender_email__iexact=email,
-                                               sender_organization__contains=organization,
-                                               sender_name__iexact=person,message_subject__contains=keyword,
-                                               message_body__contains=keyword,create_time__gte=start_date,
-                                               create_time__lte=end_date)
+
+    if email !='':
+        messages=DashBoard_Messages.objects.filter(sender_email__iexact=email)
+        if len(messages) is 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if organization!='':
+        if 'messages' not in locals():
+            messages=DashBoard_Messages.objects.filter(sender_organization__iexact=organization)
+        else:
+            messages=messages.filter(sender_organization__iexact=organization)
+
+        logger.debug(type(messages))
+        if len(messages) is 0:
+            logger.debug('not found')
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    if person!='':
+        if 'messages' not in locals():
+            messages=DashBoard_Messages.objects.filter(sender_name__iexact=person)
+        else:
+            messages=messages.filter(sender_name__iexact=person)
+
+        if len(messages) is 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    if keyword!='':
+        if 'messages' not in locals():
+            messages=DashBoard_Messages.objects.filter(message_body__contains=keyword,message_subject__contains=keyword)
+        else:
+            messages=messages.filter(message_body__contains=keyword,message_subject__contains=keyword)
+
+        if len(messages) is 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+    if start_date!='':
+       date=datetime.datetime.strptime(start_date, "%m/%d/%Y")
+       if 'messages' not in locals():
+            messages=DashBoard_Messages.objects.filter(create_time__gte=date)
+       else:
+          messages=messages.filter(create_time__gte=date)
+
+       if len(messages) is 0:
+           return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if end_date!='':
+        date=datetime.datetime.strptime(end_date, "%m/%d/%Y")
+        if 'messages' not in locals():
+             messages=DashBoard_Messages.objects.filter(create_time__lte=date)
+        else:
+           messages=messages.filter(create_time__lte=date)
+
+        if len(messages) is 0:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
     serialized_output=DashBoard_MessagesSerializer(messages,many=True)
 

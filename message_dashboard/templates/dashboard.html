@@ -4,36 +4,28 @@
     <div class="row header">
         <h2>Message Dashboard</h2>
     </div>
-    <div class="row login_bar">
-         <div class="col-sm-8 ">
-                 <div class="col-lg-5 col-lg-offset-3 search_bar">
-                   <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search for...">
-                     <span class="input-group-btn">
-                       <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
-                      </span>
-                    </div><!-- /input-group -->
-                  </div><!-- /.col-lg-6 -->
+        <div class="row login_bar">
+            <div class="col-sm-9">
 
-
-         </div>
-        <div class="col-sm-4">
-             <div class="btn-group logout_btn">
-                  <button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Hello {{username}}</button>
-                  <button type="button" class="btn btn-default btn-lg dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
-                    <span class="caret"></span>
-                    <span class="sr-only">Toggle Dropdown</span>
-                  </button>
-                  <ul class="dropdown-menu" role="menu">
-                     <li><a href="#">Profile</a></li>
-                     <!--<li><a href="#">Setting</a></li>
-                     <li><a href="#">Something else here</a></li>-->
-                     <li class="divider"></li>
-                     <li><a  href="/msg_board/logout">Logout</a></li>
-                  </ul>
+            </div>
+            <div class="col-sm-3 logout_btn">
+                 <div class="btn-group btn_disabled">
+                      <button type="button" class="btn btn-default btn-lg btn_disabled" disabled><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Hello {{username}}</button>
+                      <button type="button" class="btn btn-default btn-lg dropdown-toggle " data-toggle="dropdown" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toggle Dropdown</span>
+                      </button>
+                      <ul class="dropdown-menu" role="menu">
+                         <li><a href="#">Profile</a></li>
+                         <!--<li><a href="#">Setting</a></li>
+                         <li><a href="#">Something else here</a></li>-->
+                         <li class="divider"></li>
+                         <li><a  href="/msg_board/logout">Logout</a></li>
+                      </ul>
+                 </div>
              </div>
          </div>
-    </div>
+
     <div ng-app="dashboardApp">
         <div class="row ">
             <div class="col-sm-2">
@@ -48,11 +40,11 @@
 
         <div class="row body">
          <!--***************-SIDEBAR START*************************--->
-
-        <div class="side_bar col-sm-4">
-              <div class="container">
+        <div class="container-fluid">
+        <div class="side_bar col-sm-3">
+              <div class="container-fluid">
                     <!--<div class="row-fluid">-->
-                        <div class="col-sm-3">
+                        <div class="col-sm-12">
                             <div class="panel-group" id="accordion">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -63,32 +55,34 @@
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse in">
                                         <div class="panel-body">
+                                            {% verbatim %}
                                             <table class="table" ng-controller="messageController">
                                                 <tr>
                                                     <td>
                                                         <span class="glyphicon glyphicon-calendar 24hours" aria-hidden="true"></span><a href="#" ng-click="getMessage('24hours')">Last 24-hours</a>
-                                                         <span class="badge">4</span>
+                                                         <span class="badge">{{count_24Hours}}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span class="glyphicon glyphicon-calendar 7days" aria-hidden="true"></span><a href="#" ng-click="getMessage('7days')">Last 7-days</a>
-                                                         <span class="badge">15</span>
+                                                         <span class="badge">{{count_7Days}}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span class="glyphicon glyphicon-calendar 30days" aria-hidden="true"></span><a href="#" ng-click="getMessage('30days')">Last 30-days</a>
-                                                         <span class="badge">25</span>
+                                                         <span class="badge">{{count_30Days}}</span>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span class="glyphicon glyphicon-calendar All" aria-hidden="true"></span><a href="#" ng-click="getMessage('All')">All</a>
-                                                        <span class="badge">42</span>
+                                                        <span class="badge">{{count_All}}</span>
                                                     </td>
                                                 </tr>
                                             </table>
+                                            {% endverbatim %}
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +105,7 @@
 
                                                               <!--<input type="email" id="email_id" name="email" class="form-control typeahead" list="json-datalist" autocomplete="off" placeholder="Enter an email id" ng-model="values.email">-->
 
-                                                              <input type="email" name='email' class="form-control" autocomplete="off" placeholder="Enter an email id" ng-model="values.email" typeahead="message.fields.sender_email for message in messages | filter:$viewValue | limitTo:3">                                                <!--Error message if email validation fails-->
+                                                              <input type="email" name='email' class="form-control" autocomplete="off" placeholder="Enter an email" ng-model="values.email" typeahead="message.fields.sender_email for message in messages | filter:$viewValue | limitTo:3">                                                <!--Error message if email validation fails-->
                                                                <div class=" col-sm-12 error_msg error alert alert-danger" role="alert" ng-show="searchForm.$error.email && submitted"  >
                                                                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                                      <span class="sr-only">Error:</span> Enter a valid email address
@@ -125,7 +119,7 @@
                                                     <td>
                                                         <div class="col-sm-12">
                                                             <div class="input-group"  >
-                                                              <input type="text"  name="company" autocomplete="off" class="form-control" placeholder="Enter a Company name" ng-model="values.company" typeahead="message.fields.sender_organization for message in messages | filter:$viewValue | limitTo:3">
+                                                              <input type="text"  name="company" autocomplete="off" class="form-control" placeholder="Enter a Company" ng-model="values.company" typeahead="message.fields.sender_organization for message in messages | filter:$viewValue | limitTo:3">
                                                               <!--<input type="text" name="company" id="org" class="form-control typeahead"  data-provide="typeahead" placeholder="Enter a Company name" ng-model="values.company">-->
                                                             </div><!-- /input-group -->
                                                          </div><!-- /.col-lg-6 -->
@@ -135,7 +129,7 @@
                                                     <td>
                                                        <div class="col-sm-12">
                                                             <div class="input-group">
-                                                                  <input type="text" name="person" autocomplete="off" class="form-control" placeholder="Enter a Company name" ng-model="values.person" typeahead="message.fields.sender_name for message in messages | filter:$viewValue | limitTo:3">
+                                                                  <input type="text" name="person" autocomplete="off" class="form-control" placeholder="Enter a Person" ng-model="values.person" typeahead="message.fields.sender_name for message in messages | filter:$viewValue | limitTo:3">
                                                                   <!--<input type="text" name="person"  id="name_id" class="form-control typeahead" placeholder="Enter a Person Name" ng-model="values.person">-->
                                                              </div><!-- /input-group -->
                                                          </div>
@@ -185,11 +179,15 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                       <div class="col-sm-11 ">
+                                                       <div class="col-sm-12 ">
                                                           <div class="input-group reset_go_button">
-                                                                <button type="button" class="btn btn-success" ng-click="submitted=true;isInValid=dateValidation();sendData()">GO</button>
+                                                                <button type="button" class="btn btn-success" ng-click="submitted=true;isInValid=dateValidation();isEmpty=sendData()">GO</button>
                                                                 <button type="button" class="btn btn-success" ng-click=" submitted=false;resetSearchForm()">RESET</button>
                                                            </div><!-- /input-group -->
+                                                          <div class="empty_req_error alert alert-danger alert-dismissible" role="alert" ng-show="isEmpty">
+                                                            <button type="button" class="close" aria-label="Close" ng-click="isEmpty=closeAlert()"><span aria-hidden="true">&times;</span></button>
+                                                            <strong>Oops!</strong> At least one search criteria needs to be filled.
+                                                          </div>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -204,17 +202,95 @@
                 </div>
            </div>
             <!--***************-SIDEBAR END*************************--->
-            <div class="messages col-sm-8">
-                <h1>messages</h1>
-                <input  ng-model="test" type="text">
-                {% verbatim %}
-                {{test}}
-                {% endverbatim %}
+            <!--#############Messages block****************************--->
+            <div class="messages col-sm-9" ng-controller="messagesBlockCtrl">
+               <div class='col-sm-5 row'>
+                   <div class="input-group">
+                     <input type="text" class="form-control" placeholder="Search for...">
+                     <span class="input-group-btn">
+                       <button class="btn btn-default btn_disabled" type="button" disabled><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                      </span>
+                    </div>
+               </div>
+               <div class=" row message_table ">
+                    <table class="table table-responsive table-hover table-condensed table-striped">
+                      <thead>
+                          <tr>
+                            <th></th>
+                            <th>
+                                <div class="btn-group table_heading">
+                                  <button type="button" class="btn btn-lg btn_disabled" disabled>SENDER</button>
+                                  <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Sort by Ascending</a></li>
+                                    <li><a href="#">Sort by Descending</a></li>
+                                  </ul>
+                                </div>
+                            </th>
+                            <th>
+                                <div class="btn-group table_heading">
+                                  <button type="button" class="btn btn-lg btn_disabled" disabled>SUBJECT</button>
+                                  <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Sort by Ascending</a></li>
+                                    <li><a href="#">Sort by Descending</a></li>
+                                  </ul>
+                                </div>
+                            </th>
+                            <th>
+                                 <div class="btn-group table_heading">
+                                  <button type="button" class="btn btn-lg btn_disabled" disabled>ORGANIZATION</button>
+                                  <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Sort by Ascending</a></li>
+                                    <li><a href="#">Sort by Descending</a></li>
+                                  </ul>
+                                </div>
+                            </th>
+                            <th>
+                                 <div class="btn-group table_heading">
+                                  <button type="button" class="btn btn-lg btn_disabled" disabled>EMAIL</button>
+                                  <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Sort by Ascending</a></li>
+                                    <li><a href="#">Sort by Descending</a></li>
+                                  </ul>
+                                </div>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {% verbatim %}
+                          <tr  class='messages-list' ng-repeat="message in message_list">
+                            <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                            <td>{{message.sender_name}}</td>
+                            <td>{{message.message_subject}}</td>
+                            <td>{{message.sender_organization}}</td>
+                            <td>{{message.sender_email}}</td>
+                            <td><a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                          </tr>
+                          {% endverbatim %}
+                        </tbody>
+                    </table>
+               </div>
 
             </div>
         </div>
+        </div>
          <div class="row footer">
-             <h4><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> 2015 Copyright</h4>
+             <h4><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>Rahul Sharma 2015 Copyright</h4>
         </div>
     </div>
 </div>

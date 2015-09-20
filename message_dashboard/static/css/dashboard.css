@@ -1,0 +1,138 @@
+/*body{
+    margin-top:50px;
+}*/
+
+
+
+.header{
+   background-color: #212121;
+   color: #ffffff;
+   text-align: center;
+   font-family: 'Karma', serif;
+}
+
+
+.login_bar{
+    background-color: #F0F4C3;
+    color: #212121;
+    padding-top:0.25% ;
+}
+
+
+
+.logout_btn button.caret{
+    height: 100%;
+    margin-right: 10%;
+    padding-right: 100%;
+}
+
+.side_bar{
+
+    padding-bottom: 0.5%;
+}
+
+.table_heading button{
+    background-color: #ffffff;
+    border: none;
+    font-family: 'PT Serif Caption', serif;
+    font-weight: bolder;
+}
+
+.btn_disabled{
+    color: #000000;
+    background-color: #ffffff;
+
+}
+
+
+.search_bar{
+     padding-top: 1%;
+     padding-bottom: 1%;
+}
+
+.glyphicon {
+    margin-right:10px;
+}
+
+.panel-body {
+    padding:0px;
+}
+
+.panel-body table tr td {
+    padding-left: 15px
+}
+
+.panel-body .table {
+    margin-bottom: 0px;
+}
+
+
+.footer{
+   background-color: #212121;
+   color: #ffffff;
+   text-align: center;
+   font-family: 'Karma', serif;
+}
+
+.reset_go_button{
+    width:80%;
+
+}
+
+.reset_go_button button{
+
+   margin-left:2%;
+
+}
+
+.error_msg{
+
+    font-size:95%;
+    margin-top: 2%;
+}
+
+.error_msg_date{
+    font-size:95%;
+    margin-top:-5%;
+}
+
+
+/*input::-webkit-calendar-picker-indicator
+{
+  display: none;
+/*}**/
+
+.empty_req_error{
+
+    margin-top: 3%;
+}
+
+a{
+   color: #E1704B;
+   transition: color 0.5s ease;
+}
+a:hover {
+    cursor:pointer;
+}
+
+.messages-list{
+    font-family: 'Roboto Slab', serif;
+    font-size: larger;
+
+}
+.add-res{
+  float:right;
+}
+
+.message_table{
+    margin-top: 5%;
+    overflow-y: scroll;
+    height: 400px;
+}
+
+
+
+/**
+font-family: 'Raleway', sans-serif;
+font-family: 'Merriweather', serif;
+**/

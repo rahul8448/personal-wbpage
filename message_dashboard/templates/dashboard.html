@@ -203,20 +203,38 @@
            </div>
             <!--***************-SIDEBAR END*************************--->
             <!--#############Messages block****************************--->
-            <div class="messages col-sm-9" ng-controller="messagesBlockCtrl">
+            <div class="messages col-sm-9" >
                <div class='col-sm-5 row'>
                    <div class="input-group">
-                     <input type="text" class="form-control" placeholder="Search for...">
+                     <input type="text" ng-model='query' class="form-control" placeholder="Enter search text...">
+
                      <span class="input-group-btn">
                        <button class="btn btn-default btn_disabled" type="button" disabled><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
                       </span>
                     </div>
                </div>
-               <div class=" row message_table ">
-                    <table class="table table-responsive table-hover table-condensed table-striped">
-                      <thead>
+                 <div class=" col-sm-7 row add-res">
+                      <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Restore all deleted messages" >RESTORE</button>
+                      <button type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Add new messages">ADD</button>
+                  </div>
+               <div class=" row message_table" ng-controller="messagesBlockCtrl">
+                    <table class=" table table-responsive table-hover table-condensed table-striped" >
+                      <thead class="t-head">
                           <tr>
                             <th></th>
+                            <th>
+                                <div class="btn-group table_heading">
+                                  <button type="button" class="btn btn-lg btn_disabled" disabled>DATE</button>
+                                  <button type="button" class="btn btn-lg dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                  </button>
+                                  <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#" ng-click="predicate = 'create_time'; reverse=false">Sort by Ascending</a></li>
+                                    <li><a href="#" ng-click="predicate = '-create_time'; reverse=false">Sort by Descending</a></li>
+                                  </ul>
+                                </div>
+                            </th>
                             <th>
                                 <div class="btn-group table_heading">
                                   <button type="button" class="btn btn-lg btn_disabled" disabled>SENDER</button>
@@ -225,8 +243,8 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                   </button>
                                   <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Sort by Ascending</a></li>
-                                    <li><a href="#">Sort by Descending</a></li>
+                                    <li><a href="#" ng-click="predicate = 'sender_name'; reverse=false">Sort by Ascending</a></li>
+                                    <li><a href="#" ng-click="predicate = '-sender_name'; reverse=false">Sort by Descending</a></li>
                                   </ul>
                                 </div>
                             </th>
@@ -238,8 +256,8 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                   </button>
                                   <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Sort by Ascending</a></li>
-                                    <li><a href="#">Sort by Descending</a></li>
+                                    <li><a href="#" ng-click="predicate = 'message_subject'; reverse=false">Sort by Ascending</a></li>
+                                    <li><a href="#" ng-click="predicate = '-message_subject'; reverse=false">Sort by Descending</a></li>
                                   </ul>
                                 </div>
                             </th>
@@ -251,8 +269,8 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                   </button>
                                   <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Sort by Ascending</a></li>
-                                    <li><a href="#">Sort by Descending</a></li>
+                                    <li><a href="#" ng-click="predicate = 'sender_organization'; reverse=false">Sort by Ascending</a></li>
+                                    <li><a href="#" ng-click="predicate = '-sender_organization'; reverse=false">Sort by Descending</a></li>
                                   </ul>
                                 </div>
                             </th>
@@ -264,31 +282,37 @@
                                     <span class="sr-only">Toggle Dropdown</span>
                                   </button>
                                   <ul class="dropdown-menu" role="menu">
-                                    <li><a href="#">Sort by Ascending</a></li>
-                                    <li><a href="#">Sort by Descending</a></li>
+                                    <li><a href="#" ng-click="predicate = 'sender_email'; reverse=false">Sort by Ascending</a></li>
+                                    <li><a href="#" ng-click="predicate = '-sender_email'; reverse=false">Sort by Descending</a></li>
                                   </ul>
                                 </div>
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
+
+
+                        <tbody class="t-body">
                           {% verbatim %}
-                          <tr  class='messages-list' ng-repeat="message in message_list">
-                            <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
-                            <td>{{message.sender_name}}</td>
-                            <td>{{message.message_subject}}</td>
-                            <td>{{message.sender_organization}}</td>
-                            <td>{{message.sender_email}}</td>
-                            <td><a href="#"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
-                          </tr>
+                              <tr  class='messages-list' ng-repeat="message in message_list|filter:query|orderBy:predicate:reverse">
+                                <td><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></td>
+                                <td>{{message.create_time| date:'MM/dd/yyyy @ h:mma'}}</td>
+                                <td>{{message.sender_name}}</td>
+                                <td>{{message.message_subject}}</td>
+                                <td>{{message.sender_organization}}</td>
+                                <td>{{message.sender_email}}</td>
+                                <td class="del-icon" id="{{message.id}}" ><a href="#" ng-click="deleteMsg(message.id);"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></button></td>
+                              </tr>
                           {% endverbatim %}
                         </tbody>
+
                     </table>
                </div>
-
             </div>
         </div>
-        </div>
+       </div>
+       <div>
+
+       </div>
          <div class="row footer">
              <h4><span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>Rahul Sharma 2015 Copyright</h4>
         </div>

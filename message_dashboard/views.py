@@ -199,27 +199,28 @@ def get_messages(request):
 
     logger.debug("Entering get_messages method")
     period=request.GET.get('period')
-    logger.debug(request.GET        )
-    logger.debug(period)
+    #logger.debug(request.GET        )
+    #logger.debug(period)
     if period=='All':
-        messages=DashBoard_Messages.objects.all()
+        messages=DashBoard_Messages.objects.all().filter(is_read=False).order_by('-create_time')
     elif period=='30days':
         #d = date.today() - timedelta(days=30)
         d = timezone.now()- timedelta(days=30)
-        logger.debug(d)
-        messages=DashBoard_Messages.objects.filter(create_time__gte=d)
+        #logger.debug(d)
+        messages=DashBoard_Messages.objects.filter(create_time__gte=d).filter(is_read=False).order_by('-create_time')
     elif period=='7days':
         #d = date.today() - timedelta(days=7)
         d = timezone.now()- timedelta(days=7)
-        logger.debug(d)
-        messages=DashBoard_Messages.objects.filter(create_time__gte=d)
+        #logger.debug(d)
+        messages=DashBoard_Messages.objects.filter(create_time__gte=d).filter(is_read=False).order_by('-create_time')
     elif period=='24hours':
         d = timezone.now() - timedelta(hours=24)
-        logger.debug(d)
-        messages=DashBoard_Messages.objects.filter(create_time__gte=d)
+        #logger.debug(d)
+        messages=DashBoard_Messages.objects.filter(create_time__gte=d).filter(is_read=False).order_by('-create_time')
     else:
-        messages=DashBoard_Messages.objects.all()
+        messages=DashBoard_Messages.objects.all().filter(is_read=False).order_by('-create_time')
 
+    logger.debug(messages)
     serialized_output=DashBoard_MessagesSerializer(messages,many=True)
 
     logger.debug("Exiting get_messages method")
@@ -309,5 +310,37 @@ def search_messages(request):
 
     logger.debug("Exiting get_messages method")
     return Response(serialized_output.data,status=status.HTTP_200_OK)
+
+
+'''
+This is a method to set the is_read field to True
+'''
+
+@csrf_exempt
+def update_isRead(request):
+
+    logger.debug("Entering update_isRead method")
+
+    id=request.GET.get('id','')
+
+    logger.debug('id:'+id)
+
+    if id !='':
+      try:
+        msg = DashBoard_Messages.objects.get(id=id)
+        #logger.debug(msg.is_read)
+      except DashBoard_Messages.DoesNotExist:
+        return HttpResponse(status=404)
+        logger.debug("Exiting update_isRead method")
+
+      msg.is_read=True
+      msg.save()
+
+    else:
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+        logger.debug("Exiting update_isRead method")
+
+    logger.debug("Exiting update_isRead method")
+    return HttpResponse(status.HTTP_200_OK)
 
 

@@ -178,6 +178,21 @@ $(document).ready(function() {
     });
 
 
+    /*For Heartland*/
+    $('.more-info-heartland').popover({
+        html: true,
+        placement: 'right',
+        title: 'Details',
+        delay: {
+            "show": 5,
+            "hide": 5
+        },
+        trigger: 'hover',
+        content: function() {
+            return $('#content_heartland').html();
+        }
+    });
+    
     /*For Cerner*/
     $('.more-info-cerner').popover({
         html: true,

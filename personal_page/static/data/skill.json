@@ -95,6 +95,12 @@
                 "exp_words":"Competent"
             },
             {
+                "name": "Springs",
+                "experience": "1-2 years",
+                "color": "#FFB74D",
+                 "exp_words":"Advanced-Beginner"
+            },
+            {
                 "name": "Django",
                 "experience": "1-2 years",
                 "color": "#FFD54F",
@@ -256,6 +262,12 @@
                 "name": "MySql",
                 "experience": "1-2 years",
                 "color": "#E57373",
+                 "exp_words":"Advanced-Beginner"
+            },
+             {
+                "name": "MongoDB",
+                "experience": "1-2 years",
+                "color": "#A1887F",
                  "exp_words":"Advanced-Beginner"
             }
 
